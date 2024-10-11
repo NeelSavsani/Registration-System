@@ -1,1 +1,230 @@
-Past your Register.css code here
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&family=Ubuntu:wght@500&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+        background: #e2e2e2;
+
+}
+
+section
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-wrap: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+
+.Registration-Box
+{
+    position: relative;
+    width: 400px;
+    height: 450px;
+    background: #1c0f13;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+
+h2
+{
+    font-size: 2em;
+    color: #e2e2e2;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.input-box
+{
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #e2e2e2;
+}
+
+.input-box label
+{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #e2e2e2;
+    pointer-events: none;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label
+{
+    transition: 0.5s;
+    top: -5px;
+}
+
+.input-box input
+{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #e2e2e2;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon
+{
+    position: absolute;
+    right: 8px;
+    color: #e2e2e2;
+    font-size: 1.2em;
+    line-height: 57px;
+}
+
+.remember-forgot
+{
+    margin: -15px 0 15px;
+    font-size: 0.9em;
+    color: #e2e2e2;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.remember-forgot label input
+{
+    margin-right: 3px;
+}
+
+.remember-forgot a
+{
+    color: #e2e2e2;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover
+{
+    text-decoration: underline;
+}
+
+button
+{
+    width: 100%;
+    height: 40px;
+    background: #e2e2e2;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #000;
+    font-weight: 700;
+    font-size: 1em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.register-link
+{
+    font-size: 0.9em;
+    color: #e2e2e2;
+    text-align: center;
+    margin: 25px 0 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.register-link p a
+{
+    color: #e2e2e2;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.register-link p a:hover
+{
+    text-decoration: underline;
+}
+
+@media (max-width: 360px)
+{
+    .login-box
+    {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+}
+
+.darkToggleButton
+{
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    box-shadow: var(--out-shadow);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.darkToggleButton:hover
+{
+    box-shadow: var(--inner-shadow);
+}
+body.dark
+{
+    --out-shadow: 3px 3px 3px #171717,
+                    -3px -3px 3px #1f1f1f;
+    --inner-shadow: inset 3px 3px 3px #171717,
+                    inset -3px -3px 3px #1f1f1f;
+    --bg-color: #1c0f13;
+    --text-color: #e2e2e2;
+    --a-color:  #ccc; 
+}
+
+.sun-button
+{
+    display: none!important;
+}
+
+.sun-button.active
+{
+    display: block!important;
+}
+
+.moon-button
+{
+    display: block!important;
+}
+
+.moon-button.active
+{
+    display: none!important;
+}
+
+.login-box.dark
+{
+    background: #e2e2e2;
+}
