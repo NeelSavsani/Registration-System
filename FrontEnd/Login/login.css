@@ -11,7 +11,12 @@ body
         background: #e2e2e2;
 
 }
-
+:root
+{
+    --bg-color: var(--bg-color);
+    --text-color: var(--text-color);
+   
+}
 section
 {
     display: flex;
@@ -39,7 +44,7 @@ section
     backdrop-filter: blur(15px);
 }
 
-h2
+.login-box h2
 {
     font-size: 2em;
     color: #e2e2e2;
@@ -195,36 +200,14 @@ button
 }
 body.dark
 {
-    --out-shadow: 3px 3px 3px #171717,
-                    -3px -3px 3px #1f1f1f;
-    --inner-shadow: inset 3px 3px 3px #171717,
-                    inset -3px -3px 3px #1f1f1f;
-    --bg-color: #1c0f13;
+    --bg-color: #10cf13;
     --text-color: #e2e2e2;
-    --a-color:  #ccc; 
-}
-
-.sun-button
-{
-    display: none!important;
-}
-
-.sun-button.active
-{
-    display: block!important;
-}
-
-.moon-button
-{
-    display: block!important;
-}
-
-.moon-button.active
-{
-    display: none!important;
 }
 
 .login-box.dark
 {
     background: #e2e2e2;
+}
+.login-box.dark h2{
+    color: #1c0f13;
 }
