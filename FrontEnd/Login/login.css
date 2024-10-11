@@ -14,7 +14,7 @@ body
 :root
 {
     --bg-color: #e2e2e2;
-    --text-color: #1c0f13;
+    --text-color: #28262C;
    
 }
 section
@@ -29,6 +29,9 @@ section
     
 }
 
+i{
+    color: var(--text-color);
+}
 
 .login-box
 {
@@ -178,6 +181,6 @@ button
 
 body.dark
 {
-    --bg-color: #1c0f13;
+    --bg-color: #28262C;
     --text-color: #e2e2e2;
 }
