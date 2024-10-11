@@ -8,8 +8,18 @@
 }
 body
 {
-        background: #e2e2e2;
+    background: var(--bg-color);
+}
 
+:root
+{
+    --bg-color: #e2e2e2;
+    --text-color: #28262C;
+   
+}
+
+i{
+    color: var(--text-color);
 }
 
 section
@@ -30,7 +40,7 @@ section
     position: relative;
     width: 400px;
     height: 450px;
-    background: #1c0f13;
+    background: var(--text-color);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     display: flex;
@@ -42,7 +52,7 @@ section
 h2
 {
     font-size: 2em;
-    color: #e2e2e2;
+    color: var(--bg-color);
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
@@ -52,7 +62,7 @@ h2
     position: relative;
     width: 310px;
     margin: 30px 0;
-    border-bottom: 2px solid #e2e2e2;
+    border-bottom: 2px solid var(--bg-color);
 }
 
 .input-box label
@@ -62,7 +72,7 @@ h2
     left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
-    color: #e2e2e2;
+    color: var(--bg-color);
     pointer-events: none;
     font-family: 'Poppins', sans-serif;
     transition: 0.5s;
@@ -83,7 +93,7 @@ h2
     border: none;
     outline: none;
     font-size: 1em;
-    color: #e2e2e2;
+    color: var(--bg-color);
     font-family: 'Ubuntu', sans-serif;
     padding: 0 35px 0 5px;
 }
@@ -92,7 +102,7 @@ h2
 {
     position: absolute;
     right: 8px;
-    color: #e2e2e2;
+    color: var(--bg-color);
     font-size: 1.2em;
     line-height: 57px;
 }
@@ -101,7 +111,7 @@ h2
 {
     margin: -15px 0 15px;
     font-size: 0.9em;
-    color: #e2e2e2;
+    color: var(--bg-color);
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -114,7 +124,7 @@ h2
 
 .remember-forgot a
 {
-    color: #e2e2e2;
+    color: var(--bg-color);
     text-decoration: none;
 }
 
@@ -127,21 +137,29 @@ button
 {
     width: 100%;
     height: 40px;
-    background: #e2e2e2;
-    border: none;
+    background: var(--bg-color);
+    border: 2px solid var(--text-color);
     outline: none;
     border-radius: 40px;
     cursor: pointer;
-    color: #000;
+    color: var(--text-color);
     font-weight: 700;
     font-size: 1em;
     font-family: 'Ubuntu', sans-serif;
+    transition: all 0.3s linear;
+}   
+
+button:hover{
+    border: 2px solid var(--bg-color);
+    color: var(--bg-color);
+    background: var(--text-color);
+    transition: all 0.3s linear;
 }
 
 .register-link
 {
     font-size: 0.9em;
-    color: #e2e2e2;
+    color: var(--bg-color);
     text-align: center;
     margin: 25px 0 10px;
     font-family: 'Poppins', sans-serif;
@@ -149,7 +167,7 @@ button
 
 .register-link p a
 {
-    color: #e2e2e2;
+    color: var(--bg-color);
     text-decoration: none;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
@@ -171,60 +189,8 @@ button
     }
 }
 
-.darkToggleButton
-{
-    position: fixed;
-    top: 30px;
-    left: 30px;
-    width: 50px;
-    height: 50px;
-    box-shadow: var(--out-shadow);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.darkToggleButton:hover
-{
-    box-shadow: var(--inner-shadow);
-}
 body.dark
 {
-    --out-shadow: 3px 3px 3px #171717,
-                    -3px -3px 3px #1f1f1f;
-    --inner-shadow: inset 3px 3px 3px #171717,
-                    inset -3px -3px 3px #1f1f1f;
-    --bg-color: #1c0f13;
+    --bg-color: #28262C;
     --text-color: #e2e2e2;
-    --a-color:  #ccc; 
-}
-
-.sun-button
-{
-    display: none!important;
-}
-
-.sun-button.active
-{
-    display: block!important;
-}
-
-.moon-button
-{
-    display: block!important;
-}
-
-.moon-button.active
-{
-    display: none!important;
-}
-
-.login-box.dark
-{
-    background: #e2e2e2;
 }
