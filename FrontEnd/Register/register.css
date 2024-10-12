@@ -1,26 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&family=Ubuntu:wght@500&display=swap');
 
-* {
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
+body
+{
     background: var(--bg-color);
 }
 
-:root {
+:root
+{
     --bg-color: #e2e2e2;
     --text-color: #28262C;
-
+   
 }
 
-i {
+i{
     color: var(--text-color);
 }
 
-section {
+section
+{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,11 +31,12 @@ section {
     height: 100vh;
     background-size: cover;
     background-position: center;
-
+    
 }
 
 
-.Registration-Box {
+.Registration-Box
+{
     position: relative;
     width: 400px;
     height: 450px;
@@ -45,21 +49,24 @@ section {
     backdrop-filter: blur(15px);
 }
 
-h2 {
+h2
+{
     font-size: 2em;
     color: var(--bg-color);
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.input-box {
+.input-box
+{
     position: relative;
     width: 310px;
     margin: 30px 0;
     border-bottom: 2px solid var(--bg-color);
 }
 
-.input-box label {
+.input-box label
+{
     position: absolute;
     top: 50%;
     left: 5px;
@@ -72,12 +79,14 @@ h2 {
 }
 
 .input-box input:focus~label,
-.input-box input:valid~label {
+.input-box input:valid~label
+{
     transition: 0.5s;
     top: -5px;
 }
 
-.input-box input {
+.input-box input
+{
     width: 100%;
     height: 50px;
     background: transparent;
@@ -89,7 +98,8 @@ h2 {
     padding: 0 35px 0 5px;
 }
 
-.input-box .icon {
+.input-box .icon i.fa-envelope
+{
     position: absolute;
     right: 8px;
     color: var(--bg-color);
@@ -97,7 +107,18 @@ h2 {
     line-height: 57px;
 }
 
-.remember-forgot {
+.input-box .icon i.show-pass
+{
+    position: absolute;
+    right: 8px;
+    color: var(--bg-color);
+    font-size: 1em;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.remember-forgot
+{
     margin: -15px 0 15px;
     font-size: 0.9em;
     color: var(--bg-color);
@@ -106,20 +127,24 @@ h2 {
     justify-content: center;
 }
 
-.remember-forgot label input {
+.remember-forgot label input
+{
     margin-right: 3px;
 }
 
-.remember-forgot a {
+.remember-forgot a
+{
     color: var(--bg-color);
     text-decoration: none;
 }
 
-.remember-forgot a:hover {
+.remember-forgot a:hover
+{
     text-decoration: underline;
 }
 
-button {
+button
+{
     width: 100%;
     height: 40px;
     background: var(--bg-color);
@@ -132,16 +157,17 @@ button {
     font-size: 1em;
     font-family: 'Ubuntu', sans-serif;
     transition: all 0.3s linear;
-}
+}   
 
-button:hover {
+button:hover{
     border: 2px solid var(--bg-color);
     color: var(--bg-color);
     background: var(--text-color);
     transition: all 0.3s linear;
 }
 
-.register-link {
+.register-link
+{
     font-size: 0.9em;
     color: var(--bg-color);
     text-align: center;
@@ -149,19 +175,23 @@ button:hover {
     font-family: 'Poppins', sans-serif;
 }
 
-.register-link p a {
+.register-link p a
+{
     color: var(--bg-color);
     text-decoration: none;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
 }
 
-.register-link p a:hover {
+.register-link p a:hover
+{
     text-decoration: underline;
 }
 
-@media (max-width: 360px) {
-    .login-box {
+@media (max-width: 360px)
+{
+    .login-box
+    {
         width: 100%;
         height: 100vh;
         border: none;
@@ -169,7 +199,8 @@ button:hover {
     }
 }
 
-body.dark {
+body.dark
+{
     --bg-color: #28262C;
     --text-color: #e2e2e2;
 }
