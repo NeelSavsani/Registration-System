@@ -1,41 +1,29 @@
 <?php
-$verify_otp = $_POST['verify_otp'];
-$otp = $_POST['otp'];
-$forgot_email = $_POST['forgot_email'];
-$forgot_user = $_POST['forgot_user'];
-include('dbconnect.php');
-if($verify_otp == $otp)
-{
-    echo "OTP Verified<br>";
-    echo "Welcome,<br>";
-    // $sql = "SELECT PASSWORD FROM `$table` WHERE EMAIL = '$forgot_email'";
-    $sql = "SELECT PASSWORD FROM `$table` WHERE EMAIL = '$forgot_email'";
-    $result = mysqli_query($conn, $sql);
-    $num = mysqli_num_rows($result);
-    $row = mysqli_fetch_assoc($result);
-    // echo "Password success"."<br>";
-    if($num == 1)
-    {   
-        $email = $forgot_email;
-        echo "Email: $forgot_email"."<br>"."Username: $forgot_user". "<br>". "Password: ".htmlspecialchars($row['PASSWORD']);
-    }
-    else
-    {
-        echo "Invalid email id";
-    }
-    // $num = mysqli_num_rows($result);
-    // $row = mysqli_fetch_assoc($result);
-    // if($num == 1)
-    // echo "Password success"."<br>";
-    // {   
-    //     $email = $forgot_email;
-    //     echo "Email: $forgot_email"."<br>"."Username: $forgot_user". "<br>". "Password: ".htmlspecialchars($row['PASSWORD']);
-    // }
+session_start();
+include 'dbconnect.php';
 
-}
-else
-{
-    echo "OTP Unverified";
-}
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+    
+    // Fetch user details from the database
+    $query = "SELECT email, password FROM `$table` WHERE email='$email'";
+    $result = mysqli_query($conn, $query);
+    $user = mysqli_fetch_assoc($result);
+    $usr = explode('@', $email)[0];
+    
+    if ($user) {
+        echo "<h1>User Details</h1>";
+        echo "Email: " . $user['email'] . "<br>";
+        echo "Username:" . $usr . "<br>";
+        echo "Password: " . $user['password'] . "<br>";
+    } else {
+        echo "Error fetching user details.";
+    }
 
+    // Clear the session data after displaying the details
+    session_unset();
+    session_destroy();
+} else {
+    echo "No email found. Please go back to the start.";
+}
 ?>
