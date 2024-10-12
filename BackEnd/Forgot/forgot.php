@@ -1,21 +1,44 @@
 <?php
-$otp = rand(0000, 9999);
-include('dbconnect.php');
+session_start();
+include 'dbconnect.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    
+    // Check if the email exists in the database
+    $query = "SELECT * FROM `$table` WHERE email='$email'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        // Email exists, proceed with OTP generation
+        $_SESSION['email'] = $email;
+        // Generate OTP
+        $otp = rand(1000, 9999);
+        $_SESSION['otp'] = $otp;
+
+        // Send OTP to email (using PHP mailer or similar)
+        // mail($email, "Your OTP", "Your OTP is: " . $otp);
+
+        header("Location: otp.php");
+        exit();
+    } else {
+        // Email does not exist, show an error message
+        echo "The entered email does not exist in our records.";
+    }
+}
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password?</title>
+    <title>Forgot Password</title>
 </head>
 <body>
     <h2>Forgot Password</h2>
-    <form action="otp.php" method="post">
-        Enter email: <input type="email" name="forgot_email" id="forgot_email">
-        <input type="hidden" name="otp" value="<?php echo $otp; ?>">
-        <button type="submit">Check Password</button>
+    <form method="POST" action="forgot.php">
+        <label for="email">Enter your email:</label>
+        <input type="email" name="email" id="email" required>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
