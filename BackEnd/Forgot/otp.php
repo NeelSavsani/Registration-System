@@ -1,37 +1,42 @@
 <?php
-$otp = $_POST['otp'];
-$forgot_email = $_POST['forgot_email'];
-$forgot_user = explode('@', $forgot_email)[0];
-include('dbconnect.php');
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $entered_otp = $_POST['otp'];
+    
+    if ($entered_otp == $_SESSION['otp']) {
+        // OTP is correct
+        header("Location: submitotp.php");
+        exit();
+    } else {
+        // OTP is incorrect
+        echo "Invalid OTP. Please try again.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Verification</title>
 </head>
 <body>
-    <h2>OTP Verification</h2>
-    <h3><?php echo"Welcome, "; ?></h3>
-    <form action="submitotp.php" method="POST">
-        Enter OTP: <input type="number" name="verify_otp" id="verify_otp">
-        <input type="hidden" name="otp" id="otp" value="<?php echo $otp; ?>">
-        <input type="hidden" name="forgot_email" id="forgot_email" value="<?php echo $forgot_email; ?>">
-        <input type="hidden" name="forgot_user" id="forgot_user" value="<?php echo $forgot_user; ?>">
+	<h2>OTP Verification</h2>
+    <form method="POST" action="otp.php">
+        <label for="otp">Enter OTP:</label>
+        <input type="number" name="otp" id="otp" required>
         <button type="submit">Verify OTP</button>
     </form>
 </body>
 </html>
 <?php
 include('smtp/PHPMailerAutoload.php');
-$html = '<big><b style="font-size: 1em;">'.$otp.'</b></big>';
+$forgot_email = $_SESSION['email'];
+$html = '<big><b style="font-size: 1em;">'.$_SESSION['otp'].'</b></big>';
 echo smtp_mailer($forgot_email,'OTP Verification Subject', $html);
 function smtp_mailer($to,$subject, $msg){
-    $forgot_email = $_POST['forgot_email'];
 	$mail = new PHPMailer(); 
+	$forgot_email = $_SESSION['email'];
 	$mail->IsSMTP(); 
 	$mail->SMTPAuth = true; 
 	$mail->SMTPSecure = 'tls'; 
