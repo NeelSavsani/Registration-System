@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <script src="https://kit.fontawesome.com/e05d24f6c7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="register.css">
 </head>
 
 <body>
@@ -17,26 +17,24 @@
             <form method="post">
                 <h2>Registration Form</h2>
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <span class="icon"><i class="fa-solid fa-envelope"></i></span>
                     <input type="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" id="password" required>
+                    <span class="icon toggle-password" data-target="password"><i class="fa-solid fa-eye-slash show-pass"></i></span>
                     <label>Password</label>
                 </div>
                 <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" id="repassword" required>
+                    <span class="icon toggle-password" data-target="repassword"><i class="fa-solid fa-eye-slash show-pass"></i></span>
                     <label>Re-Enter Password</label>
                 </div>
 
-
                 <button type="submit">Register</button>
                 <div class="register-link">
-
-                    <p> Registered already? <a href="login.html">Login</a></p>
+                    <p>Registered already? <a href="login.html">Login</a></p>
                 </div>
             </form>
         </div>
@@ -48,6 +46,22 @@
         btn.onclick = function () {
             bdy.classList.toggle("dark");
         }
+
+        const togglePasswordIcons = document.querySelectorAll('.toggle-password');
+
+        togglePasswordIcons.forEach(icon => {
+            icon.addEventListener('click', function () {
+                const targetId = this.getAttribute('data-target');
+                const targetField = document.getElementById(targetId);
+
+                // Toggle the type attribute
+                const type = targetField.getAttribute('type') === 'password' ? 'text' : 'password';
+                targetField.setAttribute('type', type);
+
+                // Toggle the icon
+                this.innerHTML = type === 'password' ? '<i class="fa-solid fa-eye-slash show-pass"></i>' : '<i class="fa-solid fa-eye show-pass"></i>';
+            });
+        });
     </script>
 
 </body>
