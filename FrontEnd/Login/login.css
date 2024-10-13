@@ -65,13 +65,15 @@ i.fa-gear{
 
 .login-box h2
 {
+    position: relative;
+    top: -2vh;
     font-size: 2em;
     color: var(--bg-color);
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.input-box
+.input_box
 {
     position: relative;
     width: 310px;
@@ -79,7 +81,7 @@ i.fa-gear{
     border-bottom: 2px solid var(--bg-color);
 }
 
-.input-box label
+.input_box label
 {
     position: absolute;
     top: 50%;
@@ -92,14 +94,14 @@ i.fa-gear{
     transition: 0.5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label
+.input_box input:focus~label,
+.input_box input:valid~label
 {
     transition: 0.5s;
     top: -5px;
 }
 
-.input-box input
+.input_box input
 {
     width: 100%;
     height: 50px;
@@ -112,7 +114,7 @@ i.fa-gear{
     padding: 0 35px 0 5px;
 }
 
-.input-box .icon i.fa-envelope
+.input_box .icon i.fa-envelope
 {
     position: absolute;
     right: 8px;
@@ -121,7 +123,7 @@ i.fa-gear{
     line-height: 57px;
 }
 
-.input-box .icon i.show-pass
+.input_box .icon i.show-pass
 {
     position: absolute;
     right: -1px;
@@ -162,6 +164,7 @@ button
     width: 100%;
     height: 40px;
     background: var(--bg-color);
+    margin: 2% 0;
     border: 2px solid var(--text-color);
     outline: none;
     border-radius: 40px;
@@ -177,6 +180,11 @@ button:hover{
     border: 2px solid var(--bg-color);
     color: var(--bg-color);
     background: var(--text-color);
+    transition: all 0.3s linear;
+}
+
+button:hover i{
+    color: var(--bg-color);
     transition: all 0.3s linear;
 }
 
@@ -221,7 +229,7 @@ body.dark
 }
 
 
-.input-box .toggle-password {
+.input_box .toggle-password {
     position: absolute;
     right: 8px;
     top: 15px;
