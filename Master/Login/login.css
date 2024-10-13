@@ -1,38 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&family=Ubuntu:wght@500&display=swap');
 
-* {
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-body {
-    background: var(--bg-color);
+body
+{
+        background: var(--bg-color);
 
 }
-
-:root {
+:root
+{
     --bg-color: #e2e2e2;
     --text-color: #28262C;
-
+    --primary-color: #000;
+   
 }
-
-section {
+section
+{
     display: flex;
     justify-content: center;
     align-items: center;
     word-wrap: 100%;
-    height: 100vh;
+    height: 90vh;
     background-size: cover;
     background-position: center;
-
+    
 }
 
-i {
-    color: var(--text-color);
+i.fa-gear{
+    position: relative;
+    top: 0.5vh;
+    left: 0.5vh;
+    font-size: 2em;
+    padding: 0.7%;
+    border-radius: 100%;
+    border: 2px solid var(--text-color);
+    color: var(--bg-color);
+    background: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s linear;
 }
 
-.login-box {
+.fa-gear:hover{
+    box-shadow: 2px 2px 10px 0px var(--primary-color) inset;
+    transition: all 0.3s linear;
+}
+
+.login-box
+{
     position: relative;
     width: 400px;
     height: 450px;
@@ -45,21 +63,26 @@ i {
     backdrop-filter: blur(15px);
 }
 
-.login-box h2 {
+.login-box h2
+{
+    position: relative;
+    top: -2vh;
     font-size: 2em;
     color: var(--bg-color);
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.input-box {
+.input_box
+{
     position: relative;
     width: 310px;
     margin: 30px 0;
     border-bottom: 2px solid var(--bg-color);
 }
 
-.input-box label {
+.input_box label
+{
     position: absolute;
     top: 50%;
     left: 5px;
@@ -71,13 +94,15 @@ i {
     transition: 0.5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
+.input_box input:focus~label,
+.input_box input:valid~label
+{
     transition: 0.5s;
     top: -5px;
 }
 
-.input-box input {
+.input_box input
+{
     width: 100%;
     height: 50px;
     background: transparent;
@@ -89,7 +114,8 @@ i {
     padding: 0 35px 0 5px;
 }
 
-.input-box .icon {
+.input_box .icon i.fa-envelope
+{
     position: absolute;
     right: 8px;
     color: var(--bg-color);
@@ -97,7 +123,18 @@ i {
     line-height: 57px;
 }
 
-.remember-forgot {
+.input_box .icon i.show-pass
+{
+    position: absolute;
+    right: -1px;
+    color: var(--bg-color);
+    font-size: 1em;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.remember-forgot
+{
     margin: -15px 0 15px;
     font-size: 0.9em;
     color: var(--bg-color);
@@ -106,23 +143,28 @@ i {
     justify-content: center;
 }
 
-.remember-forgot label input {
+.remember-forgot label input
+{
     margin-right: 3px;
 }
 
-.remember-forgot a {
+.remember-forgot a
+{
     color: var(--bg-color);
     text-decoration: none;
 }
 
-.remember-forgot a:hover {
+.remember-forgot a:hover
+{
     text-decoration: underline;
 }
 
-button {
+button
+{
     width: 100%;
     height: 40px;
     background: var(--bg-color);
+    margin: 2% 0;
     border: 2px solid var(--text-color);
     outline: none;
     border-radius: 40px;
@@ -134,14 +176,20 @@ button {
     transition: all 0.3s linear;
 }
 
-button:hover {
+button:hover{
     border: 2px solid var(--bg-color);
     color: var(--bg-color);
     background: var(--text-color);
     transition: all 0.3s linear;
 }
 
-.register-link {
+button:hover i{
+    color: var(--bg-color);
+    transition: all 0.3s linear;
+}
+
+.register-link
+{
     font-size: 0.9em;
     color: var(--bg-color);
     text-align: center;
@@ -149,19 +197,23 @@ button:hover {
     font-family: 'Poppins', sans-serif;
 }
 
-.register-link p a {
+.register-link p a
+{
     color: var(--bg-color);
     text-decoration: none;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
 }
 
-.register-link p a:hover {
+.register-link p a:hover
+{
     text-decoration: underline;
 }
 
-@media (max-width: 360px) {
-    .login-box {
+@media (max-width: 360px)
+{
+    .login-box
+    {
         width: 100%;
         height: 100vh;
         border: none;
@@ -169,15 +221,28 @@ button:hover {
     }
 }
 
-body.dark {
+body.dark
+{
     --bg-color: #28262C;
     --text-color: #e2e2e2;
+    --primary-color: grey;
+}
+
+
+.input_box .toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 15px;
+    cursor: pointer;
+    color: var(--bg-color);
+    font-size: 1.2em;
+    line-height: 50px;
 }
 
 
 
 /* ==================PHP====================== */
-.success{
+.success {
     font-family: 'Ubuntu', sans-serif;
     color: #7ddf64;
     text-align: center;
@@ -186,6 +251,7 @@ body.dark {
     font-size: 1.2em;
     display: flex;
 }
+
 
 .danger{
     font-family: 'Ubuntu', sans-serif;
