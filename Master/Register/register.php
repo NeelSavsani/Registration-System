@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <script src="https://kit.fontawesome.com/e05d24f6c7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="Register.css">
 </head>
 <body>
     <i class="fa-solid fa-gear"></i>
@@ -40,39 +40,25 @@
                 $showAlert = false;
                 $showError = false;
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    //creating a connection
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $database = "project";
-                    $table = "login_credentials";
-                    $conn = mysqli_connect($servername, $username, $password, $database);
-                    if($conn)
+                    include '../dbconnect.php';
+                    $register_email = $_POST['register_email'];
+                    $register_pass = $_POST['register_pass'];
+                    $register_repass = $_POST['register_repass'];
+                    $register_user = explode('@', $register_email)[0];
+                    if($register_pass == $register_repass && $register_pass != NULL)
                     {
-                        // echo "Connection Success"."<br>";
-                        $register_email = $_POST['register_email'];
-                        $register_pass = $_POST['register_pass'];
-                        $register_repass = $_POST['register_repass'];
-                        $register_user = explode('@', $register_email)[0];
-                        if($register_pass == $register_repass && $register_pass != NULL)
+                        $sql = "INSERT INTO `$table` (`Email`, `Password`, `Date`) VALUES ('$register_email', '$register_pass', current_timestamp());";
+                        $result = mysqli_query($conn, $sql);
+                        // echo "Password success";
+                        if($result)
                         {
-                            $sql = "INSERT INTO `$table` (`Email`, `Password`, `Date`) VALUES ('$register_email', '$register_pass', current_timestamp());";
-                            $result = mysqli_query($conn, $sql);
-                            // echo "Password success";
-                            if($result)
-                            {
-                                echo '<span class="success">'."Registeration completed, $register_user"."<br>Redirecting to homepage...".'</span>';
-                                echo '<meta http-equiv="refresh" content="1;url=../home.php">';
-                            }
-                        }
-                        else
-                        {
-                            echo '<span class="danger">'."Both Passwords do not match".'</span>';
+                            echo '<span class="success">'."Registeration completed, $register_user"."<br>Redirecting to homepage...".'</span>';
+                            echo '<meta http-equiv="refresh" content="1;url=../home.php">';
                         }
                     }
                     else
                     {
-                        die("Error". mysqli_connect_error());
+                        echo '<span class="danger">'."Both Passwords do not match".'</span>';
                     }
                 }
             ?>
