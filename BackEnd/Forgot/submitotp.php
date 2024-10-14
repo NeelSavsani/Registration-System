@@ -17,6 +17,10 @@ if (isset($_SESSION['email'])) {
         echo "Email: " . $user['email'] . "<br>";
         echo "Username:" . $usr . "<br>";
         echo "Password: " . $user['password'] . "<br>";
+        echo '<form action="reset.php" method="POST">';
+        echo '<input type="hidden" name="email" value="' . $email . '">';
+        echo '<button type="submit">Change Password</button>';
+        echo '</form>';
     } else {
         echo "Error fetching user details.";
     }
