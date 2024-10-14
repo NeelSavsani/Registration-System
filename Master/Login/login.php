@@ -48,33 +48,24 @@
                 </div>
                 <?php
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        // creating a connection
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $database = "project";
-                        $table = "login_credentials";
-                        $conn = mysqli_connect($servername, $username, $password, $database);
-                        if ($conn) {
-                            $login_email = $_POST['login_email'];
-                            $login_pass = $_POST['login_pass'];
-                            $login_user = explode('@', $login_email)[0];
-                            if ($login_email != NULL && $login_pass != NULL) {
-                                $sql = "SELECT * FROM `$table` WHERE EMAIL = '$login_email' AND PASSWORD = '$login_pass'";
-                                $result = mysqli_query($conn, $sql);
-                                $num = mysqli_num_rows($result);
-                                if ($num == 1) {
-                                    echo '<span class="success">Login Successful.<br> Welcome, ' . $login_user . '<br>Redirecting to homepage...</span>';
-                                    echo '<meta http-equiv="refresh" content="2;url=../home.php">';
-                                    exit();
-                                } else {
-                                    echo '<span class="danger">Invalid login credentials</span>';
-                                }
+                        include '../dbconnect.php';
+                        $login_email = $_POST['login_email'];
+                        $login_pass = $_POST['login_pass'];
+                        $login_user = explode('@', $login_email)[0];
+                        if ($login_email != NULL && $login_pass != NULL) {
+                            $sql = "SELECT * FROM `$table` WHERE EMAIL = '$login_email' AND PASSWORD = '$login_pass'";
+                            $result = mysqli_query($conn, $sql);
+                            $num = mysqli_num_rows($result);
+                            if ($num == 1) {
+                                echo '<span class="success">Login Successful.<br> Welcome, ' . $login_user . '<br>Redirecting to homepage...</span>';
+                                echo '<meta http-equiv="refresh" content="2;url=../home.php">';
+                                exit();
                             } else {
-                                echo '<span class="danger">Email and password are required</span>';
+                                echo '<span class="danger">Invalid login credentials</span>';
                             }
-                        } else {
-                            die("Error" . mysqli_connect_error());
+                        } 
+                        else {
+                            echo '<span class="danger">Email and password are required</span>';
                         }
                     }                    
                 ?>
