@@ -6,7 +6,7 @@ $password = "";
 $database = "project";
 $table ="login_credentials";
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect($servername, $username, $password);
 
 if(!$conn)
 {
