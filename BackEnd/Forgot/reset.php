@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pass']) && isset($_POS
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "Password changed.";
+            echo '<meta http-equiv="refresh" content="2;url=../home.php">';
         } else {
             echo "Password was not changed: " . mysqli_error($conn);
         }
